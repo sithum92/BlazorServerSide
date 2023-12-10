@@ -1,0 +1,52 @@
+﻿@page "/"
+
+
+
+<p>
+    Name: @person.SalesPerson
+</p>
+
+<p>
+    Amount: @person.Amount.ToString("c")
+ 
+</p>
+
+@code{
+
+
+    IndexViewModel person = null;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        person = new IndexViewModel
+            {
+
+                SalesPerson = "Alex",
+                Amount = 15000,
+                Locations = new List<Location>
+                {
+                    new Location{ Id=1,City = "Toronto" , ProvState="Ontrio", Country="Canada"},
+                    new Location{ Id=1,City="Montreal",ProvState="Quebec",Country="Canada"}
+                }
+            };
+    }
+
+
+    class IndexViewModel
+    {
+        public string SalesPerson { get; set; }
+        public double Amount { get; set; }
+        public bool isAvtive { get; set; }
+        public List<Location> Locations;
+    }
+
+    class Location
+    {
+    public int Id { get; set; }
+    public string City { get; set; }
+    public string ProvState { get; set; }
+    public string Country { get; set; }
+    }
+}
